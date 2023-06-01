@@ -26,6 +26,17 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Install Zivid SDK
+      run: |
+        cd $GITHUB_WORKSPACE
+        mkdir Zivid
+        cd Zivid
+        wget \
+        https://downloads.zivid.com/sdk/releases/2.9.0+4dbba385-1/u22/zivid-telicam-driver_3.0.1.1-3_amd64.deb \
+        https://downloads.zivid.com/sdk/releases/2.9.0+4dbba385-1/u22/zivid_2.9.0+4dbba385-1_amd64.deb
+        sudo apt install ./*.deb
+        cd $GITHUB_WORKSPACE
+        rm -rf Zivid
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
