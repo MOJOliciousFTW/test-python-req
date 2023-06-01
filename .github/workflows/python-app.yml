@@ -28,6 +28,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Install Zivid SDK
       run: |
+        chmod +x ./scripts/buildscript.sh
         sudo ./scripts/buildscript.sh
     - name: Install dependencies
       run: |
